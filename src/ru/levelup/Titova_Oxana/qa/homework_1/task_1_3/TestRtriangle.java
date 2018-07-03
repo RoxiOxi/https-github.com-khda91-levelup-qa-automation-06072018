@@ -11,33 +11,17 @@ import static junit.framework.TestCase.assertEquals;
 
 public class TestRtriangle {
 
+    @Test
+    public void object_is_right_triangle() {
 
-    Rtriangle triangle;
+        Rtriangle rtriangle=RtriangleProvider.getRtriangle();
 
+        int[] sidesOfTriangle = Utils.getSortedSquaresSides(rtriangle);
 
-        @Before
-        public void setUp() {
-            triangle = new RtriangleImpl();
-        }
+        int sumSquaresCathetus = sidesOfTriangle[0] + sidesOfTriangle[1];
+        int squareHypotenuse = sidesOfTriangle[2];
 
-        @Ignore("This need, because it is core test")
-        @Test
-        public void object_is_triangle() {
-            throw new NotImplementedException(); //TODO
-        }
-
-        @Test
-        public void object_is_right_triangle() {
-            int[] sidesOfTriangle = Utils.getSortedSquaresSides(triangle);
-
-            int sumSquaresCathetus = sidesOfTriangle[0] + sidesOfTriangle[1];
-            int squareHypotenuse = sidesOfTriangle[2];
-
-            assertEquals(
-                    "Sum of squares cathetus must equals square hypotenuse",
-                    sumSquaresCathetus,
-                    squareHypotenuse
-            );
+        assertEquals(sumSquaresCathetus, squareHypotenuse);
     }
 
 
